@@ -5,3 +5,4 @@ define("DB_USER", "unaipuelles");
 define("DB_PASS", "12345Abcde");
 define("DB_DATABASE", "appEventos");
 define("DB_CHARSET", "utf8");
+
