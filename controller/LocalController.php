@@ -3,12 +3,12 @@
  * Created by PhpStorm.
  * User: unaipuelles
  * Date: 18/01/2019
- * Time: 20:40
+ * Time: 20:20
  */
 
-include_once __DIR__ .'/../controller/Controller.php';
+include_once __DIR__ . '/../controller/Controller.php';
 
-class EventoController extends Controller
+class LocalController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +18,7 @@ class EventoController extends Controller
     public function cargarArchivos()
     {
         parent::cargarArchivos();
-        require_once __DIR__ . '/../model/Evento.php';
+        require_once __DIR__ . '/../model/Local.php';
     }
 
     public function run($action = null, $id = null)
