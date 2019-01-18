@@ -30,4 +30,6 @@ class EventoController extends Controller
     {
         parent::twigView($page, $data);
     }
+
+
 }
