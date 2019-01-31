@@ -2,38 +2,4 @@
 
 {% block cuerpo%}
 
-    <script src="../js/model/Evento.js"></script>
-    <script src="../js/functions/eventoFunctions.js"></script>
-    <table class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Evento</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Descripci&oacute;n</th>
-            <th scope="col">Lugar</th>
-            <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% set contador = 0 %}
-        {% for evento in data %}
-            {% contador ++ %}
-            <tr>
-                <th scope="row">{% contador %}</th>
-                <td class="nombre">{{ evento.nombre }}</td>
-                <td class="tipo">{{ evento.tipo }}</td>
-                <td class="fecha">{{ evento.fecha }}</td>
-                <td class="descripcion">{{ evento.descripcion }}</td>
-                <td class="lugar">{{ evento.lugar }}</td>
-                <td>
-                    <button type="button" class="edit btn btn-primary" id="{{ evento.id }}">Editar</button>
-                    <button type="button" class="delete btn btn-danger" id="{{ evento.id }}">Eliminar</button>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
 {% endblock %}
