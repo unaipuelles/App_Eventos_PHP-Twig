@@ -32,10 +32,7 @@ function establecerControlador($controller=null){
 function cargarControlador ($controller){
     if(isset($_GET['controller'])){
         if(isset($_GET['id'])){
-            if(isset($_GET['from']))
-                $controller->run($_GET['action'], $_GET['id'], $_GET['from']);
-            else
-                $controller->run($_GET['action'], $_GET['id']);
+            $controller->run($_GET['action'], $_GET['id']);
         }
         else
             $controller->run($_GET['action']);

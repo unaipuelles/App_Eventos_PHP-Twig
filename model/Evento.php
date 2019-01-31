@@ -5,10 +5,18 @@
  * Date: 18/01/2019
  * Time: 20:09
  */
+<<<<<<< HEAD
+require_once __DIR__ . "/../config/database.php";
+
+class Evento
+{
+    private $conexion, $tableName = EVENTO_TABLENAME;
+=======
 include_once __DIR__ . "/../config/database.php";
 class Evento
 {
     private $conexion, $tableName = LOCAL_TABLENAME;
+>>>>>>> acaa404dda38ba8d16a6e0e060bb8fbd22a14bd5
     private $id, $nombre, $tipo, $fecha, $descripcion, $lugar;
 
     /**
@@ -31,7 +39,7 @@ class Evento
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -47,25 +55,9 @@ class Evento
     /**
      * @param mixed $conexion
      */
-    public function setConexion($conexion): void
+    public function setConexion($conexion)
     {
         $this->conexion = $conexion;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTablename()
-    {
-        return $this->tablename;
-    }
-
-    /**
-     * @param mixed $tablename
-     */
-    public function setTablename($tablename): void
-    {
-        $this->tablename = $tablename;
     }
 
     /**
@@ -79,7 +71,7 @@ class Evento
     /**
      * @param mixed $nombre
      */
-    public function setNombre($nombre): void
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
@@ -95,7 +87,7 @@ class Evento
     /**
      * @param mixed $tipo
      */
-    public function setTipo($tipo): void
+    public function setTipo($tipo)
     {
         $this->tipo = $tipo;
     }
@@ -111,7 +103,7 @@ class Evento
     /**
      * @param mixed $fecha
      */
-    public function setFecha($fecha): void
+    public function setFecha($fecha)
     {
         $this->fecha = $fecha;
     }
@@ -127,7 +119,7 @@ class Evento
     /**
      * @param mixed $descripcion
      */
-    public function setDescripcion($descripcion): void
+    public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
     }
@@ -143,7 +135,7 @@ class Evento
     /**
      * @param mixed $lugar
      */
-    public function setLugar($lugar): void
+    public function setLugar($lugar)
     {
         $this->lugar = $lugar;
     }
