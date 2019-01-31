@@ -9,3 +9,4 @@ define("DB_CHARSET", "utf8");
 //Nombres de las tablas de la base de datos
 define("LOCAL_TABLENAME", "local");
 define("EVENTO_TABLENAME", "evento");
+
