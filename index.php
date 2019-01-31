@@ -1,7 +1,5 @@
 <?php
 
-echo "Hola Evento";
-
 if(isset($_GET['controller'])){
     $controller = establecerControlador($_GET['controller']);
 }
@@ -18,14 +16,14 @@ function establecerControlador($controller=null){
             $controllerObj = new LocalController();
             break;
         case 'evento':
-            $file = 'controller/VinoController.php';
+            $file = 'controller/EventoController.php';
             require_once $file;
             $controllerObj = new EventoController();
             break;
         default:
-            $file = 'controller/BodegaController.php';
+            $file = 'controller/EventoController.php';
             require_once $file;
-            $controllerObj = new LocalController();
+            $controllerObj = new EventoController();
             break;
     }
     return $controllerObj;
