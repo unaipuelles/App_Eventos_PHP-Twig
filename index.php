@@ -16,14 +16,14 @@ function establecerControlador($controller=null){
             $controllerObj = new LocalController();
             break;
         case 'evento':
-            $file = 'controller/VinoController.php';
+            $file = 'controller/EventoController.php';
             require_once $file;
             $controllerObj = new EventoController();
             break;
         default:
-            $file = 'controller/BodegaController.php';
+            $file = 'controller/EventoController.php';
             require_once $file;
-            $controllerObj = new LocalController();
+            $controllerObj = new EventoController();
             break;
     }
     return $controllerObj;
@@ -32,10 +32,7 @@ function establecerControlador($controller=null){
 function cargarControlador ($controller){
     if(isset($_GET['controller'])){
         if(isset($_GET['id'])){
-            if(isset($_GET['from']))
-                $controller->run($_GET['action'], $_GET['id'], $_GET['from']);
-            else
-                $controller->run($_GET['action'], $_GET['id']);
+            $controller->run($_GET['action'], $_GET['id']);
         }
         else
             $controller->run($_GET['action']);
