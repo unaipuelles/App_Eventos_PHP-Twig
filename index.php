@@ -12,20 +12,20 @@ cargarControlador($controller);
 
 function establecerControlador($controller=null){
     switch ($controller){
-        case 'bodega':
-            $file = 'controller/BodegaController.php';
+        case 'local':
+            $file = 'controller/LocalController.php';
             require_once $file;
-            $controllerObj = new BodegaController();
+            $controllerObj = new LocalController();
             break;
-        case 'vino':
+        case 'evento':
             $file = 'controller/VinoController.php';
             require_once $file;
-            $controllerObj = new VinoController();
+            $controllerObj = new EventoController();
             break;
         default:
             $file = 'controller/BodegaController.php';
             require_once $file;
-            $controllerObj = new BodegaController();
+            $controllerObj = new LocalController();
             break;
     }
     return $controllerObj;
