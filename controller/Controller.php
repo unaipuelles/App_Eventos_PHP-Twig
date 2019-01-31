@@ -8,7 +8,7 @@
 
 abstract class controller
 {
-    private $connection, $conexion, $twig;
+    public $connection, $conexion, $twig;
 
     public function __construct()
     {
@@ -16,7 +16,7 @@ abstract class controller
 
         $this->connection = new Connection();
         $this->conexion = $this->connection->conexion();
-        $loader = new Twig_Loader_Filesystem('view');
+        $loader = new Twig_Loader_Filesystem("./view/twig");
         $this->twig = new Twig_Environment($loader);
     }
 
