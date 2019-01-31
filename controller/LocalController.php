@@ -10,6 +10,8 @@ include_once __DIR__ . '/../controller/Controller.php';
 
 class LocalController extends Controller
 {
+    private $connection, $conexion, $twig;
+
     public function __construct()
     {
         parent::__construct();

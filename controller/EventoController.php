@@ -10,6 +10,8 @@ include_once __DIR__ .'/../controller/Controller.php';
 
 class EventoController extends Controller
 {
+    private $connection, $conexion, $twig;
+
     public function __construct()
     {
         parent::__construct();
@@ -31,5 +33,14 @@ class EventoController extends Controller
         parent::twigView($page, $data);
     }
 
+<<<<<<< HEAD
+    public function defaultView()
+    {
+        $evento = new Evento($this->conexion);
+        $eventos = $evento->getAll();
+        $this->twigView("eventoView.html.twig", ["eventos" => $eventos]);
+    }
+=======
 
+>>>>>>> acaa404dda38ba8d16a6e0e060bb8fbd22a14bd5
 }

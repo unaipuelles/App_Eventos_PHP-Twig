@@ -6,9 +6,10 @@
  * Time: 12:14
  */
 
+require_once __DIR__ . "/../config/database.php";
 class Local
 {
-    private $conexion, $tableName;
+    private $conexion, $tableName = LOCAL_TABLENAME;
     private $id, $nombre, $categoria, $direccion, $telefono, $email;
 
     public function __construct($conexion)
@@ -27,7 +28,7 @@ class Local
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -43,7 +44,7 @@ class Local
     /**
      * @param mixed $conexion
      */
-    public function setConexion($conexion): void
+    public function setConexion($conexion)
     {
         $this->conexion = $conexion;
     }
@@ -59,7 +60,7 @@ class Local
     /**
      * @param mixed $tablename
      */
-    public function setTablename($tablename): void
+    public function setTablename($tablename)
     {
         $this->tablename = $tablename;
     }
@@ -75,7 +76,7 @@ class Local
     /**
      * @param mixed $nombre
      */
-    public function setNombre($nombre): void
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
@@ -91,7 +92,7 @@ class Local
     /**
      * @param mixed $categoria
      */
-    public function setCategoria($categoria): void
+    public function setCategoria($categoria)
     {
         $this->categoria = $categoria;
     }
@@ -107,7 +108,7 @@ class Local
     /**
      * @param mixed $direccion
      */
-    public function setDireccion($direccion): void
+    public function setDireccion($direccion)
     {
         $this->direccion = $direccion;
     }
@@ -123,7 +124,7 @@ class Local
     /**
      * @param mixed $telefono
      */
-    public function setTelefono($telefono): void
+    public function setTelefono($telefono)
     {
         $this->telefono = $telefono;
     }
@@ -139,7 +140,7 @@ class Local
     /**
      * @param mixed $email
      */
-    public function setEmail($email): void
+    public function setEmail($email)
     {
         $this->email = $email;
     }
