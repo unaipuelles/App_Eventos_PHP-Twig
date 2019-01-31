@@ -1,5 +1,7 @@
 <?php
 
+echo "Hola Evento";
+
 if(isset($_GET['controller'])){
     $controller = establecerControlador($_GET['controller']);
 }
