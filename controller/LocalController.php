@@ -35,7 +35,38 @@ class LocalController extends Controller
         $local = new Local($this->conexion);
         $local->setId($id);
         $datos = $local->findById($id);
-        $this->twigView("localView.twig", ["local" => $datos]);
+        if($datos != null){
+            $this->twigView("localView.twig", ["local" => $datos]);
+        }else{
+            header("Location: ./");
+        }
+    }
 
+    public function editLocal($id){
+        $local = new Local($this->conexion);
+        $local->setId($id);
+        $local->setAllParameters($_POST["nombre"], $_POST["categoria"], $_POST["direccion"], $_POST["telefono"], $_POST["email"]);
+        if($local->update() !=null){
+            header("Location: /index.php?controller=local&action=detailsLocal&id=" . $id);
+        }
+    }
+
+    public function deleteLocal($id){
+        $local = new Local($this->conexion);
+        $local->setId($id);
+        if($local->delete() !=null){
+            header("Location: /.");
+        }
+    }
+
+    public function createLocal(){
+        $local = new Local($this->conexion);
+        $local->setAllParameters($_POST["nombre"], $_POST["categoria"], $_POST["direccion"], $_POST["telefono"], $_POST["email"]);
+        $idLocal = $local->create();
+        if($idLocal != null){
+            $this->detailsLocal($idLocal[0]);
+        }else{
+            echo "Hubo un error.";
+        }
     }
 }
