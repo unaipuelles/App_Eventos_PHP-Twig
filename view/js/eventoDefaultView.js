@@ -13,7 +13,6 @@ function showModal(clickedLink) {
         type: "GET",
         url: "./api/evento/"+$(clickedLink).attr('idEvento')
     }).done(function (data) {
-        alert(data);
         data = JSON.parse(data);
         $("#nombre").val(data['nombre']);
         $("#descripcion").val(data['descripcion']);

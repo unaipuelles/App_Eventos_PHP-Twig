@@ -7,6 +7,10 @@
  */
 
 include_once __DIR__ .'/../controller/Controller.php';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET");
+header('Content-Type: application/json');
+
 
 class ApiController extends Controller
 {
@@ -28,25 +32,28 @@ class ApiController extends Controller
 
     public function verifyRequest($request)
     {
-        if($request[0] == "api" && $request[1] == "evento" && is_numeric($request[2] && count($request) == 3))
-        {
-            $evento = new Evento($this->conexion);
-            $evento->setId($request[2]);
-            $evento = $evento->findById();
-            if($evento != null)
-            {
-                http_response_code(200);
-                echo json_encode($evento);
-            }
-            else
-            {
-                http_response_code(404);
-                echo json_encode(array("message" => "El evento no existe"));
-            }
-        }
+        if($request[0] == "api" && $request[1] == "evento" && is_numeric($request[2]))
+            $this->findEvento($request[2]);
         else{
-            http_response_code(404);
+            http_response_code(400);
             echo json_encode(array("message" => "La peticion no se ha hecho correctamente"));
+        }
+    }
+
+    public function findEvento($id)
+    {
+        $evento = new Evento($this->conexion);
+        $evento->setId($id);
+        $evento = $evento->findById();
+        if($evento != null)
+        {
+            http_response_code(200);
+            echo json_encode($evento);
+        }
+        else
+        {
+            http_response_code(404);
+            echo json_encode(array("message" => "El evento no existe"));
         }
     }
 }
