@@ -37,4 +37,11 @@ class EventoController extends Controller
         $eventos = $evento->getIndexViewData();
         $this->twigView('eventoView.html.twig', ['eventos' => $eventos]);
     }
+
+    public function getEventData(){
+        $evento = new Evento($this->conexion);
+        $evento->setId($_POST['id']);
+        $evento = $evento->findById();
+        die(json_encode($evento));
+    }
 }

@@ -1,5 +1,3 @@
-
-
 <div id="modalEvento" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -11,50 +9,48 @@
             </div>
             <div class="modal-body">
                 <!--- cuerpo del modal--->
-                <form id="idLocalModal" class="needs-validation" novalidate>
+                <form id="idEventoModal" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
-                        <input class="form-control" type="text" id="nombre" required>
+                        <input class="form-control" type="text" id="nombre" required disabled>
                         <div class="invalid-feedback">
                             El nombre del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripci&oacute;n:</label>
-                        <input class="form-control" type="text" id="descripcion" required>
+                        <input class="form-control" type="text" id="descripcion" required disabled>
                         <div class="invalid-feedback">
                             La descripci&oacute;n del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="fecha">Fecha:</label>
-                        <input class="form-control" type="date" id="fecha" required>
+                        <input class="form-control" type="date" id="fecha" required disabled>
                         <div class="invalid-feedback">
                             La fecha del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lugar">Lugar:</label>
-                        <input class="form-control" type="text" id="lugar" required>
+                        <input class="form-control" type="text" id="lugar" required disabled>
                         <div class="invalid-feedback">
                             El lugar del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="tipo">Tipo:</label>
-                        <select id="tipo"  class="form-control" class="form-control">
-                            <option value="deportivo">Deportivo</option>
-                            <option value="concierto">Concierto</option>
-                            <option value="exposicion">Exposici&oacute;n</option>
-                            <option value="aprendizaje">Aprendizaje</option>
-                            <option value="baile">Baile</option>
-                            <option value="defensa personal">Defensa Personal</option>
+                        <select id="tipo"  class="form-control" class="form-control" disabled>
+                            <option id="Deportivo" value="deportivo">Deportivo</option>
+                            <option id="Concierto" value="concierto">Concierto</option>
+                            <option id="Exposición" value="exposicion">Exposici&oacute;n</option>
+                            <option id="Aprendizaje" value="aprendizaje">Aprendizaje</option>
+                            <option id="Baile" value="baile">Baile</option>
+                            <option id="Defensa Personal" value="defensa personal">Defensa Personal</option>
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-secondary" id="cancelarEvento" value="Cancelar">
-                        <input type="button" class="btn btn-danger" id="eliminarEvento" value="Eliminar">
-                        <input type="button" class="btn btn-primary" id="modificarEvento" value="Confirmar">
+                        <input type="button" class="btn btn-secondary" id="closeModal" value="Cerrar">
                     </div>
                 </form>
             </div>
