@@ -8,10 +8,10 @@ $(document).ready(function () {
 });
 
 function showModal(clickedLink) {
+    alert($(clickedLink).attr('idEvento'))
     $.ajax({
-        type: "POST",
-        url: "./index.php?controller=evento&action=getEventData",
-        data: {id : $(clickedLink).attr('idEvento')}
+        type: "GET",
+        url: "./api/evento/"+$(clickedLink).attr('idEvento')
     }).done(function (data) {
         data = JSON.parse(data);
         $("#nombre").val(data['nombre']);
