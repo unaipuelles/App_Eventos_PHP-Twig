@@ -32,4 +32,8 @@ class LocalController extends Controller
     {
         parent::twigView($page, $data);
     }
+
+    public function detailsLocal($id){
+
+    }
 }
