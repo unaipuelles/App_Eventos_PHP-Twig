@@ -12,6 +12,7 @@ class Evento
 {
     private $conexion, $tableName = EVENTO_TABLENAME;
 
+
     private $id, $nombre, $tipo, $fecha, $descripcion, $lugar;
 
     /**
