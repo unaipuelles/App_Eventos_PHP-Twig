@@ -28,7 +28,7 @@ class ApiController extends Controller
 
     public function verifyRequest($request)
     {
-        if($request[0] == "api" && $request[1] == "evento" && is_numeric($request[2]))
+        if($request[0] == "api" && $request[1] == "evento" && is_numeric($request[2] && count($request) == 3))
         {
             $evento = new Evento($this->conexion);
             $evento->setId($request[2]);
