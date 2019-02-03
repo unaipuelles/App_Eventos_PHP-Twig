@@ -158,6 +158,14 @@ class Local
         $stmnt = $this->conexion->prepare('INSERT INTO '.$this->tableName.' (nombre, categoria, direccion, telefono, email) 
             VALUES (:nombre, :categoria, :direccion, :telefono, :email)');
         $correcto = $stmnt->execute($data);
+
+        if($correcto != null){
+            $consulta = $this->conexion->prepare("SELECT idLocal FROM " . $this->tableName . " ORDER BY idLocal DESC LIMIT 1");
+            $consulta->execute();
+            $correcto = $consulta->fetch();
+        }else{
+            $correcto = null;
+        }
         $this->conexion = null;
         return $correcto;
     }
@@ -172,7 +180,8 @@ class Local
 
     public function findById(){
         $data = array('id' => $this->id);
-        $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE idlocal = :id");
+        //Se ha hecho de esta forma para controlar si un local se puede o no se puede eliminar segun si tiene o no eventos
+        $consulta = $this->conexion->prepare("SELECT *, (SELECT sum(Local_idLocal) from evento WHERE Local_idLocal= :id) as eventos FROM " . $this->tableName . " WHERE idlocal = :id");
         $consulta->execute($data);
         $resultados = $consulta->fetch();
         $this->conexion = null;
@@ -182,7 +191,7 @@ class Local
     public function update(){
         $data = array('nombre'=>$this->nombre, 'categoria'=>$this->categoria, 'direccion'=>$this->direccion, 'telefono'=>$this->telefono, 'email'=>$this->email, "id"=>$this->id);
         $stmnt = $this->conexion->prepare("UPDATE ".$this->tableName." SET nombre = :nombre, categoria = :categoria, direccion = :direccion, telefono = :telefono, email = :email 
-                                            WHERE id = :id");
+                                            WHERE idLocal = :id");
         $correcto = $stmnt->execute($data);
         $this->conexion = null;
         return $correcto;
@@ -190,7 +199,7 @@ class Local
 
     public function delete(){
         $data = array("id" => $this->id);
-        $stmnt = $this->conexion->prepare('DELETE FROM '.$this->tableName.' WHERE id = :id');
+        $stmnt = $this->conexion->prepare('DELETE FROM '.$this->tableName.' WHERE idLocal = :id');
         $correcto = $stmnt->execute($data);
         $this->conexion = null;
         return $correcto;

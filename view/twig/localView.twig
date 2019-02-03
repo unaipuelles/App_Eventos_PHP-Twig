@@ -2,44 +2,52 @@
 {% block cuerpo %}
     <div class="row">
         <div class="col-6">
-            <input type="button" class="btn btn-primary" id="altaLocal" value="Alta Evento"/>
+            <!-- Esta opcion permite controlar si se puede eliminar o no un local, si no tiene eventos aparece el boton -->
+            {% if local['eventos'] == 0 %}
+                <form method="post" action="/index.php?controller=local&action=deleteLocal&id={{ local['idLocal'] }}">
+                    <input type="button" class="btn btn-info" id="editarLocal" value="Editar Local"/>
+                    <input type="button" class="btn btn-danger" name="deleteLocal" hidden/>
+                    <input type="submit" class="btn btn-danger" id="eliminarLocal" value="Eliminar Local"/>
+                </form>
+            {% else %}
+                <input type="button" class="btn btn-info" id="editarLocal" value="Editar Local"/>
+            {% endif %}
         </div>
         <div class="col-6">
-            <input type="button" class="btn btn-info pull-right" id="editarLocal" value="Editar Local"/>
-            <input type="button" class="btn btn-danger pull-right" id="eliminarLocal" value="Eliminar Local"/>
+            <input type="button" class="btn btn-primary float-right" id="altaEvento" value="Alta Evento"/>
         </div>
     </div>
     <div class="row">
-        <div class="col-7">
-            <form id="idLocal" class="needs-validation" novalidate>
+        <div class="col-6">
+            <form id="idLocal" action="/index.php?controller=local&action=editLocal&id={{ local['idLocal'] }}" method="post" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input class="form-control" type="text" id="nombre" required  value="{{ local['nombre'] }}" disabled>
+                    <input class="form-control" type="text" id="nombre" name="nombre" required  value="{{ local['nombre'] }}" disabled>
                     <div class="invalid-feedback">
                         El nombre del Local es obligatorio.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="direccion">Direcci&oacute;n:</label>
-                    <input class="form-control" type="text" id="direccion" required value="{{ local['direccion'] }}" disabled>
+                    <input class="form-control" type="text" id="direccion" name="direccion" required value="{{ local['direccion'] }}" disabled>
                     <div class="invalid-feedback">
                         La direcci&oacute;n del Local es obligatorio.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="telefono">Tel&eacute;fono:</label>
-                    <input class="form-control" type="tel" id="telefono" required value="{{ local['telefono'] }}" disabled>
+                    <input class="form-control" type="tel" id="telefono" name="telefono" required value="{{ local['telefono'] }}" disabled>
                     <div class="invalid-feedback">
                         El Tel&eacute;fono del Local es obligatorio.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail:</label>
-                    <input class="form-control" type="email" id="email" value="{{ local['email'] }}" disabled>
+                    <input class="form-control" type="email" id="email" name="email" value="{{ local['email'] }}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="categoria">Categoria</label>
-                    <select id="categoria" class="form-control" class="form-control" disabled>
+                    <select id="categoria" class="form-control" name="categoria" class="form-control" disabled>
                         {% set categorias = ["Museo", "Sala de conciertos", "Teatro", "Auditorio", "Palacio de congresos"] %}
                         {% for val in categorias %}
                             {% if val == local['categoria'] %}
@@ -51,11 +59,13 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-primary" id="modificarLocal" value="Confirmar">
+                    <input type="button" class="btn btn-primary" id="cancelarLocal" value="Cancelar" hidden>
+                    <input type="button" class="btn btn-info" id="altaLocal" value="Alta nuevo Local"/>
+                    <input type="submit" class="btn btn-primary" id="modificarLocal" value="Confirmar" hidden>
                 </div>
             </form>
         </div>
-        <div class="offset-1 col-4">
+        <div class="offset-1 col-5">
         </div>
     </div>
 {% endblock %}
