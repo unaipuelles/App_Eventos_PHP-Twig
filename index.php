@@ -1,12 +1,32 @@
 <?php
 
-if(isset($_GET['controller'])){
-    $controller = establecerControlador($_GET['controller']);
+if(isset($_GET['api']))
+{
+    $request = explode("/", $_GET['api']);
+
+    if($request[0] == "api")
+    {
+        require_once 'controller/ApiController.php';
+        $apiController = new ApiController();
+        $apiController->runController($request);
+    }
+    else
+    {
+        defaultCase();
+    }
 }
 else
-    $controller = establecerControlador();
-cargarControlador($controller);
+    defaultCase();
 
+function defaultCase()
+{
+    if(isset($_GET['controller'])){
+        $controller = establecerControlador($_GET['controller']);
+    }
+    else
+        $controller = establecerControlador();
+    cargarControlador($controller);
+}
 
 function establecerControlador($controller=null){
     switch ($controller){
