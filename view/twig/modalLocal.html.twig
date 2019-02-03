@@ -1,0 +1,58 @@
+<div id="modalLocal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Datos del Local</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--- cuerpo del modal--->
+                <form id="idLocalModal" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input class="form-control" type="text" id="nombre" required>
+                        <div class="invalid-feedback">
+                            El nombre del Local es obligatorio.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Direcci&oacute;n:</label>
+                        <input class="form-control" type="text" id="direccion" required>
+                        <div class="invalid-feedback">
+                            La direcci&oacute;n del Local es obligatorio.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Tel&eacute;fono:</label>
+                        <input class="form-control" type="tel" id="telefono" required>
+                        <div class="invalid-feedback">
+                            El Tel&eacute;fono del Local es obligatorio.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input class="form-control" type="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria"  class="form-control" class="form-control">
+                            <option value="museo">Museo</option>
+                            <option value="sala de conciertos">Sala de conciertos</option>
+                            <option value="teatro">Teatro</option>
+                            <option value="auditorio">Auditorio</option>
+                            <option value="palacio de congresos">Palacio de Congresos</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary" id="cancelarLocal" value="Cancelar">
+                        <input type="button" class="btn btn-danger" id="eliminarLocal" value="Eliminar">
+                        <input type="button" class="btn btn-primary" id="modificarLocal" value="Confirmar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -5,18 +5,13 @@
  * Date: 18/01/2019
  * Time: 20:09
  */
-<<<<<<< HEAD
-require_once __DIR__ . "/../config/database.php";
+
+include_once __DIR__ . "/../config/database.php";
 
 class Evento
 {
-    private $conexion, $tableName = EVENTO_TABLENAME;
-=======
-include_once __DIR__ . "/../config/database.php";
-class Evento
-{
     private $conexion, $tableName = LOCAL_TABLENAME;
->>>>>>> acaa404dda38ba8d16a6e0e060bb8fbd22a14bd5
+
     private $id, $nombre, $tipo, $fecha, $descripcion, $lugar;
 
     /**
