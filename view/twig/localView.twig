@@ -2,49 +2,52 @@
 {% block cuerpo %}
     <div class="row">
         <div class="col-6">
-            <input type="button" id="altaLocal" value="Alta Evento"/>
+            <input type="button" class="btn btn-primary" id="altaLocal" value="Alta Evento"/>
         </div>
         <div class="col-6">
-            <input class="col-6" type="button" id="altaLocal" value="Editar Local"/>
-            <input type="button" id="altaLocal" value="Eliminar Local"/>
+            <input type="button" class="btn btn-info pull-right" id="editarLocal" value="Editar Local"/>
+            <input type="button" class="btn btn-danger pull-right" id="eliminarLocal" value="Eliminar Local"/>
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
-            <form id="idLocal" class="needs-validation" novalidate disabled="true">
+        <div class="col-7">
+            <form id="idLocal" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input class="form-control" type="text" id="nombre" required>
+                    <input class="form-control" type="text" id="nombre" required  value="{{ local['nombre'] }}" disabled>
                     <div class="invalid-feedback">
                         El nombre del Local es obligatorio.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="direccion">Direcci&oacute;n:</label>
-                    <input class="form-control" type="text" id="direccion" required>
+                    <input class="form-control" type="text" id="direccion" required value="{{ local['direccion'] }}" disabled>
                     <div class="invalid-feedback">
                         La direcci&oacute;n del Local es obligatorio.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="telefono">Tel&eacute;fono:</label>
-                    <input class="form-control" type="tel" id="telefono" required>
+                    <input class="form-control" type="tel" id="telefono" required value="{{ local['telefono'] }}" disabled>
                     <div class="invalid-feedback">
                         El Tel&eacute;fono del Local es obligatorio.
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail:</label>
-                    <input class="form-control" type="email" id="email">
+                    <input class="form-control" type="email" id="email" value="{{ local['email'] }}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="categoria">Categoria</label>
-                    <select id="categoria"  class="form-control" class="form-control">
-                        <option value="museo">Museo</option>
-                        <option value="sala de conciertos">Sala de conciertos</option>
-                        <option value="teatro">Teatro</option>
-                        <option value="auditorio">Auditorio</option>
-                        <option value="palacio de congresos">Palacio de Congresos</option>
+                    <select id="categoria" class="form-control" class="form-control" disabled>
+                        {% set categorias = ["Museo", "Sala de conciertos", "Teatro", "Auditorio", "Palacio de congresos"] %}
+                        {% for val in categorias %}
+                            {% if val == local['categoria'] %}
+                                <option value="{{ local['categoria'] }}" selected>{{ local['categoria'] }}</option>
+                            {% else %}
+                                <option value="{{ val }}">{{ val }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="modal-footer">
@@ -52,8 +55,7 @@
                 </div>
             </form>
         </div>
-        <div class="offset-1 col-3">
-
+        <div class="offset-1 col-4">
         </div>
     </div>
 {% endblock %}
