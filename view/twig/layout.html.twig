@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <title>Gestión de Eventos</title>
     <link href="./view//bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="./view//bootstrapbootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./view/jquery/jquery-3.3.1.min.js" rel="script"></script>
+    <script type="text/javascript" src="./view/bootstrap/js/bootstrap.js" rel="script"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    {% block navbar %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="./index.php">App locales Eventos</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    {% block navbarNavigation %}{% endblock %}
-                </div>
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="./index.php">App locales Eventos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                {% block navbarNavigation %}{% endblock %}
             </div>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Búsqueda de eventos" aria-label="Buscar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
-        </nav>
-    {% endblock %}
+        </div>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Búsqueda de eventos" aria-label="Buscar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </nav>
+{% endblock %}
+<div class="container mt-5">
     <div class="row col-md-12 justify-content-center">
         <h1>Gestion de Eventos</h1>
     </div>
@@ -40,5 +40,6 @@
         </div>
     </div>
 </div>
+{% block script %}{% endblock %}
 </body>
 </html>

@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block navbarNavigation %}
-    <a class="nav-item nav-link active" href="./index.php?controller=evento&action=defaultView">Eventos <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active disabled" href="./index.php?controller=evento&action=defaultView">Eventos <span class="sr-only">(current)</span></a>
     <a class="nav-item nav-link" href="./index.php?controller=local&action=defaultView">Locales</a>
 {% endblock %}
 
@@ -17,7 +17,7 @@
         <tbody>
         {% for evento in eventos %}
             <tr>
-                <td><a href="./index.php?controller=evento&action=detailsEvento&id={{ evento['idEvento'] }}">{{ evento['nombre'] }}</a></td>
+                <td><a href="#" class="eventoModal" idEvento="{{ evento['idEvento'] }}">{{ evento['nombre'] }}</a></td>
                 <td>{{ evento['fecha'] }}</td>
                 <td>
                     <a href="./index.php?controller=local&action=detailsLocal&id={{ evento['idLocal'] }}">{{ evento['localNombre'] }}</a>
@@ -26,6 +26,12 @@
         {% endfor %}
         </tbody>
     </table>
+    {% include "modalEvento.html.twig" %}
 {% endblock %}
+
+{% block script %}
+    <script src="./view/js/eventoDefaultView.js" rel="script" type="text/javascript"></script>
+{% endblock %}
+
 
 

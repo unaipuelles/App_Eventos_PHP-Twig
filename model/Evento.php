@@ -162,7 +162,7 @@ class Evento
     }
 
     public function getIndexViewData(){
-        $consulta = $this->conexion->prepare("SELECT e.nombre nombre, e.fecha fecha, l.idLocal idLocal, l.nombre localNombre
+        $consulta = $this->conexion->prepare("SELECT e.idEvento idEvento, e.nombre nombre, e.fecha fecha, l.idLocal idLocal, l.nombre localNombre
                                               FROM ".$this->tableName." e, local l
                                               WHERE e.local_idLocal = l.idLocal
                                               ORDER BY e.fecha");
@@ -174,11 +174,11 @@ class Evento
 
     public function findById(){
         $data = array('id' => $this->id);
-        $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE id = :id");
+        $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE idEvento = :id");
         $consulta->execute($data);
         $resultados = $consulta->fetch();
         $this->conexion = null;
-        $this->setAllParameters($resultados['nombre'], $resultados['tipo'], $resultados['fecha'], $resultados['descripcion'], $resultados['lugar']);
+        return $resultados;
     }
 
     public function update(){
