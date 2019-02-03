@@ -161,6 +161,17 @@ class Evento
         return $resultados;
     }
 
+    public function getIndexViewData(){
+        $consulta = $this->conexion->prepare("SELECT e.nombre nombre, e.fecha fecha, l.idLocal idLocal, l.nombre localNombre
+                                              FROM ".$this->tableName." e, local l
+                                              WHERE e.local_idLocal = l.idLocal
+                                              ORDER BY e.fecha");
+        $consulta->execute();
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null;
+        return $resultados;
+    }
+
     public function findById(){
         $data = array('id' => $this->id);
         $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE id = :id");
