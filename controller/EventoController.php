@@ -34,7 +34,7 @@ class EventoController extends Controller
     public function defaultView()
     {
         $evento = new Evento($this->conexion);
-        $eventos = $evento->getAll();
+        $eventos = $evento->getIndexViewData();
         $this->twigView('eventoView.html.twig', ['eventos' => $eventos]);
     }
 }

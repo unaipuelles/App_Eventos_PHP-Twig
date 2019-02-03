@@ -1,23 +1,14 @@
 {% extends "layout.html.twig" %}
 
-{% block navbar %}
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand">App Locales Eventos</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Búsqueda de eventos" aria-label="Buscar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-    </nav>
+{% block navbarNavigation %}
+    <a class="nav-item nav-link active" href="./index.php?controller=evento&action=defaultView">Eventos <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link" href="./index.php?controller=local&action=defaultView">Locales</a>
 {% endblock %}
-{% block cuerpo %}
-    <div class="row col">
-        <a class="btn btn-info" href="./index.php?controller=bodega&action=altaForm"><span class="fas fa-plus" aria-hidden="true"></span>  Añadir bodega</a>
-    </div>
 
+{% block cuerpo %}
     <table style="margin-top: 1%;" class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Nombre</th>
             <th>Fecha</th>
             <th>Local</th>
@@ -26,11 +17,10 @@
         <tbody>
         {% for evento in eventos %}
             <tr>
-                <td>{{ evento['idEvento'] }}</td>
-                <td>{{ evento['nombre'] }}</td>
+                <td><a href="./index.php?controller=evento&action=detailsEvento&id={{ evento['idEvento'] }}">{{ evento['nombre'] }}</a></td>
                 <td>{{ evento['fecha'] }}</td>
                 <td>
-                    <a class="btn btn-outline-info" href="./index.php?controller=local&action=details&id={{ evento['Local_idLocal'] }}"><span class="fas fa-sign-in-alt"></span>Local</a>
+                    <a href="./index.php?controller=local&action=detailsLocal&id={{ evento['idLocal'] }}">{{ evento['localNombre'] }}</a>
                 </td>
             </tr>
         {% endfor %}
