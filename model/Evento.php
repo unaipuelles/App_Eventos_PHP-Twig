@@ -6,11 +6,12 @@
  * Time: 20:09
  */
 
-include_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../config/database.php";
 
 class Evento
 {
-    private $conexion, $tableName = LOCAL_TABLENAME;
+    private $conexion, $tableName = EVENTO_TABLENAME;
+
 
     private $id, $nombre, $tipo, $fecha, $descripcion, $lugar;
 
