@@ -8,6 +8,7 @@ function habilitarBotones(){
         habilitarEdicion();
     });
     $("#altaLocal").click(function(){
+        $("#eliminarLocal").prop("hidden",true);
         $("#altaLocal").prop("hidden",true);
         $("#altaEvento").prop("hidden",true);
         $("#editarLocal").prop("hidden",true);
@@ -21,7 +22,6 @@ function habilitarBotones(){
     $("#cancelarLocal").click(function(){
         location.reload(true);
     });
-
 }
 
 function habilitarEdicion(){
