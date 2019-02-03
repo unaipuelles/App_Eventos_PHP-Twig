@@ -172,11 +172,11 @@ class Local
 
     public function findById(){
         $data = array('id' => $this->id);
-        $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE id = :id");
+        $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE idlocal = :id");
         $consulta->execute($data);
         $resultados = $consulta->fetch();
         $this->conexion = null;
-        $this->setAllParameters($resultados['nombre'], $resultados['categoria'], $resultados['direccion'], $resultados['telefono'], $resultados['email']);
+        return $resultados;
     }
 
     public function update(){
