@@ -48,6 +48,5 @@ class ApiController extends Controller
             http_response_code(404);
             echo json_encode(array("message" => "La peticion no se ha hecho correctamente"));
         }
-        $_SERVER['REQUEST_METHOD'];
     }
 }
