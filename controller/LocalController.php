@@ -70,7 +70,7 @@ class LocalController extends Controller
         $local->setAllParameters($_POST["nombre"], $_POST["categoria"], $_POST["direccion"], $_POST["telefono"], $_POST["email"]);
         $idLocal = $local->create();
         if($idLocal != null){
-            $this->detailsLocal($idLocal[0]);
+            header("Location: http://localhost/index.php?controller=local&action=detailsLocal&id=". $idLocal[0]);
         }else{
             echo "Hubo un error.";
         }
