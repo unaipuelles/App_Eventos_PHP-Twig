@@ -13,7 +13,7 @@ class Evento
     private $conexion, $tableName = EVENTO_TABLENAME;
 
 
-    private $id, $nombre, $tipo, $fecha, $descripcion, $lugar;
+    private $id, $nombre, $tipo, $fecha, $descripcion, $lugar, $Local_idLocal;
 
     /**
      * Evento constructor.
@@ -136,18 +136,36 @@ class Evento
         $this->lugar = $lugar;
     }
 
-    public function setAllParameters($nombre, $tipo, $fecha, $descripcion, $lugar){
+    /**
+     * @return mixed
+     */
+    public function getLocalIdLocal()
+    {
+        return $this->Local_idLocal;
+    }
+
+    /**
+     * @param mixed $Local_idLocal
+     */
+    public function setLocalIdLocal($Local_idLocal)
+    {
+        $this->Local_idLocal = $Local_idLocal;
+    }
+
+    public function setAllParameters($nombre, $tipo, $fecha, $descripcion, $lugar, $Local_idLocal){
         $this->nombre = $nombre;
         $this->tipo = $tipo;
         $this->fecha = $fecha;
         $this->descripcion = $descripcion;
         $this->lugar = $lugar;
+        $this->Local_idLocal = $Local_idLocal;
     }
 
     public function create(){
-        $data = array('nombre'=>$this->nombre, 'tipo'=>$this->tipo, 'fecha'=>$this->fecha, 'descripcion'=>$this->descripcion, 'lugar'=>$this->lugar);
-        $stmnt = $this->conexion->prepare('INSERT INTO '.$this->tableName.' (nombre, tipo, fecha, descripcion, lugar) 
-            VALUES (:nombre, :tipo, :fecha, :descripcion, :lugar)');
+        $data = array('nombre'=>$this->nombre, 'tipo'=>$this->tipo, 'fecha'=>$this->fecha, 'descripcion'=>$this->descripcion, 'lugar'=>$this->lugar, 'Local_idLocal' =>$this->Local_idLocal);
+        var_dump($data);
+        $stmnt = $this->conexion->prepare('INSERT INTO '.$this->tableName.' (nombre, tipo, fecha, descripcion, lugar, Local_idLocal) 
+            VALUES (:nombre, :tipo, :fecha, :descripcion, :lugar, :Local_idLocal)');
         $correcto = $stmnt->execute($data);
         $this->conexion = null;
         return $correcto;
@@ -181,10 +199,19 @@ class Evento
         return $resultados;
     }
 
+    public function findByLocalId(){
+        $data = array('Local_idLocal' => $this->Local_idLocal);
+        $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName . " WHERE Local_idLocal = :Local_idLocal");
+        $consulta->execute($data);
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null;
+        return $resultados;
+    }
+
     public function update(){
         $data = array('nombre'=>$this->nombre, 'tipo'=>$this->tipo, 'fecha'=>$this->fecha, 'descripcion'=>$this->descripcion, 'lugar'=>$this->lugar, "id"=>$this->id);
         $stmnt = $this->conexion->prepare("UPDATE ".$this->tableName." SET nombre = :nombre, tipo = :tipo, fecha = :fecha, descripcion = :descripcion, lugar = :lugar
-            WHERE id = :id");
+            WHERE idEvento = :id");
         $correcto = $stmnt->execute($data);
         $this->conexion = null;
         return $correcto;
@@ -192,7 +219,7 @@ class Evento
 
     public function delete(){
         $data = array("id" => $this->id);
-        $stmnt = $this->conexion->prepare('DELETE FROM '.$this->tableName.' WHERE id = :id');
+        $stmnt = $this->conexion->prepare('DELETE FROM '.$this->tableName.' WHERE idEvento = :id');
         $correcto = $stmnt->execute($data);
         $this->conexion = null;
         return $correcto;

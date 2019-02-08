@@ -158,7 +158,6 @@ class Local
         $stmnt = $this->conexion->prepare('INSERT INTO '.$this->tableName.' (nombre, categoria, direccion, telefono, email) 
             VALUES (:nombre, :categoria, :direccion, :telefono, :email)');
         $correcto = $stmnt->execute($data);
-
         if($correcto != null){
             $consulta = $this->conexion->prepare("SELECT idLocal FROM " . $this->tableName . " ORDER BY idLocal DESC LIMIT 1");
             $consulta->execute();

@@ -19,6 +19,7 @@ class LocalController extends Controller
     {
         parent::cargarArchivos();
         require_once __DIR__ . '/../model/Local.php';
+        require_once __DIR__ . '/../model/Evento.php';
     }
 
     public function run($action = null, $id = null)
@@ -35,8 +36,13 @@ class LocalController extends Controller
         $local = new Local($this->conexion);
         $local->setId($id);
         $datos = $local->findById($id);
+
+        $evento = new Evento($this->conexion);
+        $evento->setLocalIdLocal($id);
+        $listaEventos = $evento->findByLocalId($id);
+
         if($datos != null){
-            $this->twigView("localView.twig", ["local" => $datos]);
+            $this->twigView("localView.twig", ["local" => $datos, "eventos"=>$listaEventos]);
         }else{
             header("Location: ./");
         }
