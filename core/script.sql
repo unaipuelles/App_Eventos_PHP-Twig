@@ -3,22 +3,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema appEventos
+-- Schema appeventos
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `appEventos` ;
+DROP SCHEMA IF EXISTS `appeventos` ;
 
 -- -----------------------------------------------------
--- Schema appEventos
+-- Schema appeventos
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `appEventos` DEFAULT CHARACTER SET utf8 ;
-USE `appEventos` ;
+CREATE SCHEMA IF NOT EXISTS `appeventos` DEFAULT CHARACTER SET utf8 ;
+USE `appeventos` ;
 
 -- -----------------------------------------------------
--- Table `appEventos`.`Local`
+-- Table `appeventos`.`Local`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `appEventos`.`Local` ;
+DROP TABLE IF EXISTS `appeventos`.`Local` ;
 
-CREATE TABLE IF NOT EXISTS `appEventos`.`Local` (
+CREATE TABLE IF NOT EXISTS `appeventos`.`Local` (
   `idLocal` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `categoria` VARCHAR(150) NOT NULL,
@@ -30,11 +30,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `appEventos`.`Evento`
+-- Table `appeventos`.`Evento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `appEventos`.`Evento` ;
+DROP TABLE IF EXISTS `appeventos`.`Evento` ;
 
-CREATE TABLE IF NOT EXISTS `appEventos`.`Evento` (
+CREATE TABLE IF NOT EXISTS `appeventos`.`Evento` (
   `idEvento` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `tipo` VARCHAR(150) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `appEventos`.`Evento` (
   PRIMARY KEY (`idEvento`, `Local_idLocal`),
   CONSTRAINT `fk_Evento_Local`
     FOREIGN KEY (`Local_idLocal`)
-    REFERENCES `appEventos`.`Local` (`idLocal`)
+    REFERENCES `appeventos`.`Local` (`idLocal`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

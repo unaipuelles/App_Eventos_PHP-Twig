@@ -44,4 +44,32 @@ class EventoController extends Controller
         $evento = $evento->findById();
         die(json_encode($evento));
     }
+
+    public function deleteEvento()
+    {
+        $evento = new Evento($this->conexion);
+        $evento->setId($_POST['id']);
+        echo $evento->delete();
+    }
+
+    public function update(){
+        $evento = new Evento($this->conexion);
+        $evento->setId($_GET['idEvento']);
+        $evento->setAllParameters($_POST['nombreEvento'], $_POST['tipoEvento'], $_POST['fechaEvento'], $_POST['descripcionEvento'], $_POST['lugarEvento'],'');
+        if($evento->update()==1){
+            header("Location: index.php?controller=local&action=detailsLocal&id=" . $_POST['Local_idLocal']);
+        }else{
+            echo "Hubo un error al actualizar el local";
+        }
+    }
+
+    public function insert(){
+        $evento = new Evento($this->conexion);
+        $evento->setAllParameters($_POST['nombreEvento'], $_POST['tipoEvento'], $_POST['fechaEvento'], $_POST['descripcionEvento'], $_POST['lugarEvento'],$_POST['Local_idLocal']);
+        if($evento->create()==1){
+            header("Location: index.php?controller=local&action=detailsLocal&id=" . $_POST['Local_idLocal']);
+        }else{
+            echo "Hubo un error al insertar el local";
+        }
+    }
 }

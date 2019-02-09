@@ -1,3 +1,4 @@
+
 <div id="modalEvento" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -9,48 +10,51 @@
             </div>
             <div class="modal-body">
                 <!--- cuerpo del modal--->
-                <form id="idEventoModal" class="needs-validation" novalidate>
+                <form id="idEventoModal" method="post" action="" class="needs-validation" novalidate>
+                    <input id="Local_idLocal" name="Local_idLocal" type="text" value="{{ local['idLocal'] }}" hidden/>
+                    <input id="idEvento" type="text" hidden/>
                     <div class="form-group">
-                        <label for="nombre">Nombre:</label>
-                        <input class="form-control" type="text" id="nombre" required disabled>
+                        <label for="nombreEvento">Nombre:</label>
+                        <input class="form-control" type="text" id="nombreEvento" name="nombreEvento" required>
                         <div class="invalid-feedback">
                             El nombre del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="descripcion">Descripci&oacute;n:</label>
-                        <input class="form-control" type="text" id="descripcion" required disabled>
+                        <label for="descripcionEvento">Descripci&oacute;n:</label>
+                        <input class="form-control" type="text" id="descripcionEvento" name="descripcionEvento" required>
                         <div class="invalid-feedback">
                             La descripci&oacute;n del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="fecha">Fecha:</label>
-                        <input class="form-control" type="date" id="fecha" required disabled>
+                        <label for="fechaEvento">Fecha:</label>
+                        <input class="form-control" type="date" id="fechaEvento" name="fechaEvento" required>
                         <div class="invalid-feedback">
                             La fecha del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="lugar">Lugar:</label>
-                        <input class="form-control" type="text" id="lugar" required disabled>
+                        <label for="lugarEvento">Lugar:</label>
+                        <input class="form-control" type="text" id="lugarEvento" name="lugarEvento" required>
                         <div class="invalid-feedback">
                             El lugar del Evento es obligatorio.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="tipo">Tipo:</label>
-                        <select id="tipo"  class="form-control" class="form-control" disabled>
-                            <option id="Deportivo" value="deportivo">Deportivo</option>
-                            <option id="Concierto" value="concierto">Concierto</option>
-                            <option id="Exposición" value="exposicion">Exposici&oacute;n</option>
-                            <option id="Aprendizaje" value="aprendizaje">Aprendizaje</option>
-                            <option id="Baile" value="baile">Baile</option>
-                            <option id="Defensa Personal" value="defensa personal">Defensa Personal</option>
+                        <label for="tipoEvento">Tipo:</label>
+                        <select id="tipoEvento" name="tipoEvento"  class="form-control">
+                            <option id="Deportivo" value="Deportivo">Deportivo</option>
+                            <option id="Concierto" value="Concierto">Concierto</option>
+                            <option id="Exposición" value="Exposicion">Exposici&oacute;n</option>
+                            <option id="Aprendizaje" value="Aprendizaje">Aprendizaje</option>
+                            <option id="Baile" value="Baile">Baile</option>
+                            <option id="Defensa Personal" value="Defensa personal">Defensa Personal</option>
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-secondary" id="closeModal" value="Cerrar">
+                        <input type="button" data-dismiss="modal" class="btn btn-secondary" value="Cancelar">
+                        <input type="submit" class="btn btn-primary" id="guardarEvento" value="Guardar">
                     </div>
                 </form>
             </div>
