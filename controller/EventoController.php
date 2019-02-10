@@ -72,4 +72,26 @@ class EventoController extends Controller
             echo "Hubo un error al insertar el local";
         }
     }
+
+    public function busqueda()
+    {
+        $evento = new Evento($this->conexion);
+
+        switch ($_GET['type'])
+        {
+            case 'tipo':
+                $evento->setTipo($_GET['query']);
+                $eventos = $evento->findByType();
+            break;
+            case 'local':
+                $eventos = $evento->findByLocalName($_GET['query']);
+            break;
+            case 'fecha':
+                $evento->setFecha($_GET['query']);
+                $eventos = $evento->findByDate();
+            break;
+        }
+
+        die($this->twigView('busquedaView.html.twig', ["eventos" => $eventos]));
+    }
 }

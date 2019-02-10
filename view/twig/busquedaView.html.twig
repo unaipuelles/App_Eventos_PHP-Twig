@@ -1,0 +1,26 @@
+{% if eventos != null %}
+    <table style="margin-top: 1%;" class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Local</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for evento in eventos %}
+            <tr>
+                <td><a href="#" class="eventoModal" idEvento="{{ evento['idEvento'] }}">{{ evento['nombre'] }}</a></td>
+                <td>{{ evento['tipo'] }}</td>
+                <td>{{ evento['fecha'] }}</td>
+                <td>
+                    <a href="./index.php?controller=local&action=detailsLocal&id={{ evento['idLocal'] }}">{{ evento['localNombre'] }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h6 class="mb-4 text-center"><strong>No se han encontrado eventos con la búsqueda realizada</strong></h6>
+{% endif %}

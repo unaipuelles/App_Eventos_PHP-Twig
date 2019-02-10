@@ -32,6 +32,13 @@ class LocalController extends Controller
         parent::twigView($page, $data);
     }
 
+    public function defaultView()
+    {
+        $local = new Local($this->conexion);
+        $locales = $local->getIndexViewData();
+        $this->twigView("localListadoView.html.twig", ["locales" => $locales]);
+    }
+
     public function detailsLocal($id){
         $local = new Local($this->conexion);
         $local->setId($id);

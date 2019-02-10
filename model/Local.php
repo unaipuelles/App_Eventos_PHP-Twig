@@ -169,6 +169,14 @@ class Local
         return $correcto;
     }
 
+    public function getIndexViewData(){
+        $consulta = $this->conexion->prepare("SELECT idLocal, nombre, categoria, direccion FROM ".$this->tableName);
+        $consulta->execute();
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null;
+        return $resultados;
+    }
+
     public function getAll(){
         $consulta = $this->conexion->prepare("SELECT * FROM " . $this->tableName);
         $consulta->execute();

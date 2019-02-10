@@ -1,4 +1,10 @@
 {% extends "layout.html.twig" %}
+
+{% block navbarNavigation %}
+    <a class="nav-item nav-link" href="./index.php?controller=evento&action=defaultView">Eventos</a>
+    <a class="nav-item nav-link" href="./index.php?controller=local&action=defaultView">Locales</a>
+{% endblock %}
+
 {% block cuerpo %}
     <div class="row">
         <div class="col-6">
@@ -91,4 +97,8 @@
         </div>
     </div>
     {% include "modalEvento.html.twig" %}
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="./view/js/local.js" rel="script"></script>
 {% endblock %}
