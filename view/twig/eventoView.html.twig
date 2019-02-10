@@ -6,31 +6,37 @@
 {% endblock %}
 
 {% block cuerpo %}
-    <table style="margin-top: 1%;" class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Fecha</th>
-            <th>Local</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for evento in eventos %}
+    <h3 class="mb-4"><strong>Eventos</strong></h3>
+    <div id="divTable" style="-webkit-transition: width 2s, height 4s; /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 4s;">
+        <table style="margin-top: 1%;" class="table table-striped table-hover">
+            <thead>
             <tr>
-                <td><a href="#" class="eventoModal" idEvento="{{ evento['idEvento'] }}">{{ evento['nombre'] }}</a></td>
-                <td>{{ evento['fecha'] }}</td>
-                <td>
-                    <a href="./index.php?controller=local&action=detailsLocal&id={{ evento['idLocal'] }}">{{ evento['localNombre'] }}</a>
-                </td>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Local</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for evento in eventos %}
+                <tr>
+                    <td><a href="#" class="eventoModal" idEvento="{{ evento['idEvento'] }}">{{ evento['nombre'] }}</a></td>
+                    <td>{{ evento['tipo'] }}</td>
+                    <td>{{ evento['fecha'] }}</td>
+                    <td>
+                        <a href="./index.php?controller=local&action=detailsLocal&id={{ evento['idLocal'] }}">{{ evento['localNombre'] }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% include "modalEvento.html.twig" %}
 {% endblock %}
 
 {% block script %}
-    <script src="./view/js/eventoDefaultView.js" rel="script" type="text/javascript"></script>
+    <script src="./view/js/evento.js" rel="script" type="text/javascript"></script>
 {% endblock %}
 
 
