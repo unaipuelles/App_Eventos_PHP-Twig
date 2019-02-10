@@ -6,7 +6,6 @@
     <link href="./view//bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="./view/jquery/jquery-3.3.1.min.js" rel="script"></script>
     <script type="text/javascript" src="./view/bootstrap/js/bootstrap.js" rel="script"></script>
-    <script type="text/javascript" src="./view/js/local.js" rel="script"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
 <body>
@@ -21,10 +20,19 @@
                 {% block navbarNavigation %}{% endblock %}
             </div>
         </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Búsqueda de eventos" aria-label="Buscar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+        {% block busqueda %}
+            <form id="busqueda" class="form-inline needs-validation" novalidate>
+                <input id="busquedaInput" class="form-control mr-sm-2" type="search" placeholder="Búsqueda de eventos" aria-label="Buscar" required>
+                <li class="btn btn-outline-success my-2 my-sm-0 dropdown">
+                    <span class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Buscar por</span>
+                    <div class="dropdown-menu">
+                        <span id="busquedaTipo" class="dropdown-item">Tipo</span>
+                        <span id="busquedaLocal" class="dropdown-item">Local</span>
+                        <span id="busquedaFecha" class="dropdown-item">Fecha</span>
+                    </div>
+                </li>
+            </form>
+        {% endblock %}
     </nav>
 {% endblock %}
 <div class="container mt-5">

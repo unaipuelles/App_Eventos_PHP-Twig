@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block navbarNavigation %}
+    <a class="nav-item nav-link" href="./index.php?controller=evento&action=defaultView">Eventos</a>
+    <a class="nav-item nav-link active disabled" href="./index.php?controller=local&action=defaultView">Locales<span class="sr-only">(current)</span></a>
+{% endblock %}
+
+{% block busqueda %}
+    
+{% endblock %}
+
+
+{% block cuerpo %}
+    <h3 class="mb-4"><strong>Locales</strong></h3>
+    <table style="margin-top: 1%;" class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Direccion</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for local in locales %}
+            <tr>
+                <td><a href="./index.php?controller=local&action=detailsLocal&id={{ local['idLocal'] }}">{{ local['nombre'] }}</a></td>
+                <td>{{ local['categoria'] }}</td>
+                <td>{{ local['direccion'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -180,7 +180,7 @@ class Evento
     }
 
     public function getIndexViewData(){
-        $consulta = $this->conexion->prepare("SELECT e.idEvento idEvento, e.nombre nombre, e.fecha fecha, l.idLocal idLocal, l.nombre localNombre
+        $consulta = $this->conexion->prepare("SELECT e.idEvento idEvento, e.nombre nombre, e.fecha fecha, e.tipo ,l.idLocal idLocal, l.nombre localNombre
                                               FROM ".$this->tableName." e, local l
                                               WHERE e.local_idLocal = l.idLocal
                                               ORDER BY e.fecha");
@@ -223,6 +223,39 @@ class Evento
         $correcto = $stmnt->execute($data);
         $this->conexion = null;
         return $correcto;
+    }
+
+    public function findByType(){
+        $consulta = $this->conexion->prepare("SELECT e.idEvento idEvento, e.nombre nombre, e.fecha fecha, e.tipo ,l.idLocal idLocal, l.nombre localNombre
+                                              FROM ".$this->tableName." e, local l
+                                              WHERE e.local_idLocal = l.idLocal AND LOWER(tipo) LIKE ('%".$this->tipo."%')
+                                              ORDER BY e.fecha");
+        $consulta->execute();
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null;
+        return $resultados;
+    }
+
+    public function findByLocalName($local){
+        $consulta = $this->conexion->prepare("SELECT e.idEvento idEvento, e.nombre nombre, e.fecha fecha, e.tipo ,l.idLocal idLocal, l.nombre localNombre
+                                              FROM ".$this->tableName." e, local l
+                                              WHERE e.local_idLocal = l.idLocal AND LOWER(l.nombre) LIKE ('%".$local."%')
+                                              ORDER BY e.fecha");
+        $consulta->execute();
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null;
+        return $resultados;
+    }
+
+    public function findByDate(){
+        $consulta = $this->conexion->prepare("SELECT e.idEvento idEvento, e.nombre nombre, e.fecha fecha, e.tipo ,l.idLocal idLocal, l.nombre localNombre
+                                              FROM ".$this->tableName." e, local l
+                                              WHERE e.local_idLocal = l.idLocal AND e.fecha LIKE ('%".$this->fecha."%')
+                                              ORDER BY e.fecha");
+        $consulta->execute();
+        $resultados = $consulta->fetchAll();
+        $this->conexion = null;
+        return $resultados;
     }
 
 }
